@@ -1,5 +1,12 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import Link from "next/link";
 import ReactDOM from "react-dom";
+import {
+  StyledModalOverlay,
+  StyledModal,
+  StyledModalHeader,
+  StyledModalBody,
+} from "./Modal.styles";
 
 const Modal = ({ show, onClose, children, title }) => {
   const [isBrowser, setIsBrowser] = useState(false);
@@ -17,9 +24,9 @@ const Modal = ({ show, onClose, children, title }) => {
     <StyledModalOverlay>
       <StyledModal>
         <StyledModalHeader>
-          <a href="#" onClick={handleCloseClick}>
-            x
-          </a>
+          <Link href="#" onClick={handleCloseClick}>
+            <a>x</a>
+          </Link>
         </StyledModalHeader>
         {title && <StyledModalTitle>{title}</StyledModalTitle>}
         <StyledModalBody>{children}</StyledModalBody>
@@ -33,4 +40,5 @@ const Modal = ({ show, onClose, children, title }) => {
     return null;
   }
 };
+
 export default Modal;
