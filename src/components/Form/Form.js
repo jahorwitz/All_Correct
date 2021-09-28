@@ -8,10 +8,21 @@ const Form = ({ inherit }) => {
 
   const openModal = useCallback(() => setShowModal(true), []);
   const closeModal = useCallback(() => setShowModal(false), []);
-  const [nameInput, setNameInput] = useState("");
-  const [emailInput, setEmailInput] = useState("");
-  const [messageInput, setMessageInput] = useState("");
+
+  const [formFields, setFormFields] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
   const [checked, setChecked] = useState(false);
+
+  const handleChange = (e) => {
+    setFormFields({
+      ...formFields,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const handleClick = () => {
     if (!checked && nameInput === "" && emailInput === "" && messageInput === "") {
@@ -40,8 +51,8 @@ const Form = ({ inherit }) => {
             <input
               type="text"
               name="name"
-              value={nameInput}
-              onChange={(e) => setNameInput(e.target.value)}
+              value={formFields.name}
+              onChange={handleChange}
               placeholder="Name"
               minLength="2"
               maxLength="40"
@@ -50,9 +61,9 @@ const Form = ({ inherit }) => {
 
             <input
               type="text"
-              name="description"
-              value={messageInput}
-              onChange={(e) => setMessageInput(e.target.value)}
+              name="message"
+              value={formFields.description}
+              onChange={handleChange}
               placeholder="Project Description"
               minLength="2"
               maxLength="200"
@@ -62,8 +73,8 @@ const Form = ({ inherit }) => {
             <input
               type="email"
               name="email"
-              value={emailInput}
-              onChange={(e) => setEmailInput(e.target.value)}
+              value={formFields.email}
+              onChange={handleChange}
               placeholder="Email*"
               required
             />
