@@ -6,6 +6,7 @@ import {
   StyledModal,
   StyledModalHeader,
   StyledModalBody,
+  StyledModalTitle,
 } from "./Modal.styles";
 
 const Modal = ({ show, onClose, children, title }) => {

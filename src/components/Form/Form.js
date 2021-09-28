@@ -1,4 +1,5 @@
 import { useCallback, useState } from "react";
+import Link from "next/link";
 import Modal from "../Modal/Modal";
 import { Text, Container, ModalForm } from "./Form.styles";
 
@@ -101,3 +102,5 @@ const Form = ({ inherit }) => {
     </>
   );
 };
+
+export default Form;

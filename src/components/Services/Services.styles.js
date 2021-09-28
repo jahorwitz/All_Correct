@@ -9,10 +9,10 @@ export const Container = styled.section`
 `;
 
 export const Title = styled.h2`
-font-weight: bold;
-font-size: 52px;
-line-height: 63px;
-margin-bottom: 80px;
+  font-weight: bold;
+  font-size: 52px;
+  line-height: 63px;
+  margin-bottom: 80px;
 
-letter-spacing: -0.01em;
+  letter-spacing: -0.01em;
 `;
