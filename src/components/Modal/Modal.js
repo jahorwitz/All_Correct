@@ -29,7 +29,7 @@ const Modal = ({ show, onClose, children, title }) => {
             <a>x</a>
           </Link>
         </StyledModalHeader>
-        {title && <StyledModalTitle>{title}</StyledModalTitle>}
+        {title && <h1>{title}</h1>}
         <StyledModalBody>{children}</StyledModalBody>
       </StyledModal>
     </StyledModalOverlay>

@@ -1,23 +1,24 @@
 import styled from "styled-components";
 
-const StyledModalBody = styled.div`
+export const StyledModalBody = styled.div`
   padding-top: 10px;
 `;
 
-const StyledModalHeader = styled.div`
+export const StyledModalHeader = styled.div`
   display: flex;
   justify-content: flex-end;
   font-size: 25px;
 `;
 
-const StyledModal = styled.div`
+export const StyledModal = styled.div`
   background: white;
   width: 500px;
   height: 600px;
   border-radius: 15px;
   padding: 15px;
 `;
-const StyledModalOverlay = styled.div`
+
+export const StyledModalOverlay = styled.div`
   position: absolute;
   top: 0;
   left: 0;

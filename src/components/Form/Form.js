@@ -42,10 +42,9 @@ const Form = ({ inherit }) => {
               name="name"
               value={nameInput}
               onChange={(e) => setNameInput(e.target.value)}
-              class="popup__input popup__input_type_name"
               placeholder="Name"
-              minlength="2"
-              maxlength="40"
+              minLength="2"
+              maxLength="40"
               required
             />
 
@@ -54,10 +53,9 @@ const Form = ({ inherit }) => {
               name="description"
               value={messageInput}
               onChange={(e) => setMessageInput(e.target.value)}
-              class="popup__input popup__input_type_job"
               placeholder="Project Description"
-              minlength="2"
-              maxlength="200"
+              minLength="2"
+              maxLength="200"
               required
             />
 
@@ -66,14 +64,11 @@ const Form = ({ inherit }) => {
               name="email"
               value={emailInput}
               onChange={(e) => setEmailInput(e.target.value)}
-              class="popup__input popup__input_type_job"
               placeholder="Email*"
               required
             />
 
-            <input type="file" class="popup__button">
-              Add file if needed
-            </input>
+            <input type="file">Add file if needed</input>
             {checked && (
               <input
                 type="checkbox"
