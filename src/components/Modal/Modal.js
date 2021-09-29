@@ -4,6 +4,7 @@ import { useSpring, animated } from "react-spring";
 import ReactDOM from "react-dom";
 import { Background, ModalWrapper, ModalContent } from "./Modal.styles";
 import Confirm from "./Confirm";
+import ErrorBoundary from "../ErrorBoundary";
 
 const Modal = ({ showModal, onClose, title }) => {
   const modalRef = useRef();
@@ -47,19 +48,8 @@ const Modal = ({ showModal, onClose, title }) => {
     });
   };
 
-  //Navigates to the next page
-  const handleNext = () => {
-    setActiveStep((nextStep) => nextStep + 1);
-  };
-
   const [checked, setChecked] = useState(false);
-  const [activeStep, setActiveStep] = useState(0);
-
-  const getSteps = () => {
-    return ["EmptyForm", "FilledForm", "Confirm"];
-  };
-
-  const steps = getSteps();
+  const [submitted, setSubmitted] = useState(false);
 
   const keyPress = useCallback(
     (e) => {
@@ -75,26 +65,20 @@ const Modal = ({ showModal, onClose, title }) => {
     return () => document.removeEventListener("keydown", keyPress);
   }, [keyPress]);
 
-  // const handleClick = (e) => {
-  //   e.preventDefault();
-  //   if (!checked && nameInput === "" && emailInput === "" && messageInput === "") {
-  //     alert("Please fill out your information, and try again");
-  //   } else {
-  //     <>
-  //       <p>Thank you!</p>
-  //       <p>Your request has been sent to our manager and we will reach back to you soon.</p>
-  //       <p>Ok, got it!</p>
-  //     </>;
-  //   }
-  // };
+  const handleClick = () => {
+    if (name && email && message) {
+      onClose();
+      setSubmitted(true);
+    }
+  };
 
-  const modalContent = showModal ? (
+  const modalContent = (
     <Background ref={modalRef} onClick={handleCloseClick}>
       <animated.div style={animation}>
         <ModalWrapper>
           <ModalContent>
             {title && <h1>{title}</h1>}
-            <form>
+            <form onSubmit={handleSubmit}>
               <ErrorBoundary>
                 <input
                   type="text"
@@ -128,33 +112,35 @@ const Modal = ({ showModal, onClose, title }) => {
                 />
 
                 <input type="file">Add file if needed</input>
+
+                {checked && (
+                  <input
+                    type="checkbox"
+                    name="checkbox"
+                    value="GDPR Agreement"
+                    checked
+                    onChange={() => setChecked(!checked)}
+                  />
+                )}
+                <p>
+                  Please note that this form is strictly for project inquiries only. To apply for a
+                  job, please visit our{" "}
+                  <Link
+                    href="https://allcorrectgames.com/for-freelancers/"
+                    target="_blank"
+                    noopener="true">
+                    <a>career page.</a>
+                  </Link>
+                </p>
+                <button type="submit">Send the form –></button>
               </ErrorBoundary>
-              {checked && (
-                <input
-                  type="checkbox"
-                  name="checkbox"
-                  value="GDPR Agreement"
-                  checked
-                  onChange={() => setChecked(!checked)}
-                />
-              )}
-              <p>
-                Please note that this form is strictly for project inquiries only. To apply for a
-                job, please visit our{" "}
-                <Link
-                  href="https://allcorrectgames.com/for-freelancers/"
-                  target="_blank"
-                  noopener="true">
-                  <a>career page.</a>
-                </Link>
-              </p>
-              <button type="submit">Send the form –></button>
+              {submitted && <Confirm onClose={onClose} title="Thank you!" />}
             </form>
           </ModalContent>
         </ModalWrapper>
       </animated.div>
     </Background>
-  ) : null;
+  );
 
   if (isBrowser) {
     return ReactDOM.createPortal(modalContent, document.getElementById("modal-root"));
