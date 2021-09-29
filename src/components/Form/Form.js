@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 import Link from "next/link";
 import Modal from "../Modal/Modal";
-import { Text, Container, ModalForm } from "./Form.styles";
+import { Text, Container, ModalForm, Wrapper } from "./Form.styles";
 
 const Form = ({ inherit }) => {
   const [showModal, setShowModal] = useState(false);
@@ -37,13 +37,11 @@ const Form = ({ inherit }) => {
   };
 
   return (
-    <>
-      <Container inherit={inherit}>
-        <button onClick={openModal}>
-          <Text color="blue">Get in touch</Text>
-          <Text>to start your project —></Text>
-        </button>
-      </Container>
+    <Container inherit={inherit}>
+      <Wrapper onClick={openModal}>
+        <Text color="blue">Get in touch</Text>
+        <Text>to start your project &#10230;</Text>
+      </Wrapper>
 
       <div>
         <Modal onClose={closeModal} show={showModal} title="Get in touch">
@@ -105,7 +103,7 @@ const Form = ({ inherit }) => {
           </ModalForm>
         </Modal>
       </div>
-    </>
+    </Container>
   );
 };
 
