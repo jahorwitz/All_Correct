@@ -5,7 +5,7 @@ export const Container = styled.li`
   display: flex;
   flex-direction: column;
 
-  border-bottom: 1px solid  ${(props) => props.theme.colors.white};
+  border-bottom: 1px solid ${(props) => props.theme.colors.white};
   padding-top: 70px;
 
   &:first-child {
@@ -19,13 +19,13 @@ export const HeaderContainer = styled.div`
   justify-content: space-between;
   padding-bottom: 30px;
   align-items: center;
-`
+`;
 
 export const Title = styled.h2`
   font-weight: bold;
   font-size: 32px;
   line-height: 30px;
-`
+`;
 
 export const DropdownButton = styled.button`
   color: ${(props) => props.theme.colors.blue};
@@ -35,15 +35,15 @@ export const DropdownButton = styled.button`
   font-size: 32px;
   line-height: 30px;
 
-  transform: ${({ isOpen }) => isOpen ? "rotate(90deg)" : "none" };
+  transform: ${({ isOpen }) => (isOpen ? "rotate(90deg)" : "none")};
 
   &:hover {
     cursor: pointer;
   }
-`
+`;
 
 export const Content = styled.div`
-  visibility: ${({ isOpen }) => isOpen ? "visible" : "hidden" };
-  height: ${({ isOpen }) => isOpen ? "100%" : "0" };
-  padding: ${({ isOpen }) => isOpen ? "30px 0 60px" : "0" };
-`
+  visibility: ${({ isOpen }) => (isOpen ? "visible" : "hidden")};
+  height: ${({ isOpen }) => (isOpen ? "100%" : "0")};
+  padding: ${({ isOpen }) => (isOpen ? "30px 0 60px" : "0")};
+`;

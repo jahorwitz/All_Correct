@@ -14,6 +14,9 @@ export const Container = styled.div`
   padding-top: 250px;
   padding-bottom: 250px;
   width: 100%;
+  border-top: 1px solid #c4c4c4;
+  border-bottom: 1px solid #c4c4c4;
+  border-radius: 2px;
 `;
 
 export const Text = styled.p`
@@ -24,14 +27,6 @@ export const Text = styled.p`
   line-height: 63px;
   letter-spacing: -0.01em;
   color: ${(props) => props.theme.colors[props.color] || props.theme.colors.white};
-`;
-
-export const ModalForm = styled.form`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  margin: 0 36px 35px;
-  max-width: 358px;
 `;
 
 export const StyledFormInput = styled.input`

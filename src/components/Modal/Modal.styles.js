@@ -1,7 +1,13 @@
 import styled from "styled-components";
 
-export const StyledModalBody = styled.div`
-  padding-top: 10px;
+export const Background = styled.div`
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const StyledModalHeader = styled.div`
@@ -12,20 +18,33 @@ export const StyledModalHeader = styled.div`
 
 export const StyledModal = styled.div`
   background: white;
-  width: 500px;
-  height: 600px;
-  border-radius: 15px;
-  padding: 15px;
+  width: 404px;
+  height: 861px;
+  background: #eaeaea;
+  z-index: 10;
+  display: grid;
+  grid-template-rows: auto 1fr;
 `;
 
 export const StyledModalOverlay = styled.div`
-  position: absolute;
-  top: 0;
+  position: fixed;
+  bottom: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 50%;
+  height: 50%;
+  margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: ${(props) => props.theme.colors.white};
+  transition: opacity 0.5s linear, visibility 0s linear 0.5s;
+`;
+
+export const ModalForm = styled.div`
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
 `;
