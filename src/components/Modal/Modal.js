@@ -65,7 +65,7 @@ const Modal = ({ showModal, onClose, title }) => {
     return () => document.removeEventListener("keydown", keyPress);
   }, [keyPress]);
 
-  const handleClick = () => {
+  const handleSubmit = () => {
     if (name && email && message) {
       onClose();
       setSubmitted(true);
