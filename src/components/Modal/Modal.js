@@ -1,17 +1,14 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import Link from "next/link";
+import { useSpring, animated } from "react-spring";
 import ReactDOM from "react-dom";
-import {
-  StyledModalOverlay,
-  StyledModal,
-  StyledModalHeader,
-  StyledModalBody,
-  ModalForm,
-} from "./Modal.styles";
+import { Background, ModalWrapper, ModalContent } from "./Modal.styles";
+import Confirm from "./Confirm";
 
 const Modal = ({ showModal, onClose, title }) => {
   const modalRef = useRef();
 
+  // react spring animation
   const animation = useSpring({
     config: { duration: 500 },
     from: { opacity: 0, transform: "translate3d(0, -20px, 0)" },
@@ -20,8 +17,21 @@ const Modal = ({ showModal, onClose, title }) => {
       transform: showModal ? "translate3d(0, 0, 0)" : "translate3d(0, -20px, 0)",
     },
   });
+
+  // modal related
   const [isBrowser, setIsBrowser] = useState(false);
 
+  useEffect(() => {
+    setIsBrowser(true);
+  }, []);
+
+  const handleCloseClick = (e) => {
+    if (modalRef.current === e.target) {
+      onClose();
+    }
+  };
+
+  // form fields
   const [formFields, setFormFields] = useState({
     name: "",
     email: "",
@@ -37,17 +47,19 @@ const Modal = ({ showModal, onClose, title }) => {
     });
   };
 
-  const [checked, setChecked] = useState(false);
-
-  useEffect(() => {
-    setIsBrowser(true);
-  }, []);
-
-  const handleCloseClick = (e) => {
-    if (modalRef.current === e.target) {
-      onClose();
-    }
+  //Navigates to the next page
+  const handleNext = () => {
+    setActiveStep((nextStep) => nextStep + 1);
   };
+
+  const [checked, setChecked] = useState(false);
+  const [activeStep, setActiveStep] = useState(0);
+
+  const getSteps = () => {
+    return ["EmptyForm", "FilledForm", "Confirm"];
+  };
+
+  const steps = getSteps();
 
   const keyPress = useCallback(
     (e) => {
@@ -78,70 +90,69 @@ const Modal = ({ showModal, onClose, title }) => {
 
   const modalContent = showModal ? (
     <Background ref={modalRef} onClick={handleCloseClick}>
-      <StyledModal>
-        <animated.div style={animation}>
-          <p>
-            <Link href="#" onClick={handleCloseClick}>
-              <a>x</a>
-            </Link>
-          </p>
-          {title && <h1>{title}</h1>}
-          <ModalForm>
-            <input
-              type="text"
-              name="name"
-              value={name}
-              onChange={handleChange}
-              placeholder="Name"
-              minLength="2"
-              maxLength="40"
-              required
-            />
+      <animated.div style={animation}>
+        <ModalWrapper>
+          <ModalContent>
+            {title && <h1>{title}</h1>}
+            <form>
+              <ErrorBoundary>
+                <input
+                  type="text"
+                  name="name"
+                  value={name}
+                  onChange={handleChange}
+                  placeholder="Name"
+                  minLength="2"
+                  maxLength="40"
+                  required
+                />
 
-            <input
-              type="text"
-              name="message"
-              value={message}
-              onChange={handleChange}
-              placeholder="Project Description"
-              minLength="2"
-              maxLength="200"
-              required
-            />
+                <input
+                  type="text"
+                  name="message"
+                  value={message}
+                  onChange={handleChange}
+                  placeholder="Project Description"
+                  minLength="2"
+                  maxLength="200"
+                  required
+                />
 
-            <input
-              type="email"
-              name="email"
-              value={email}
-              onChange={handleChange}
-              placeholder="Email*"
-              required
-            />
+                <input
+                  type="email"
+                  name="email"
+                  value={email}
+                  onChange={handleChange}
+                  placeholder="Email*"
+                  required
+                />
 
-            <input type="file">Add file if needed</input>
-            {checked && (
-              <input
-                type="checkbox"
-                name="checkbox"
-                value="GDPR Agreement"
-                checked
-                onChange={() => setChecked(!checked)}
-              />
-            )}
-            <p>
-              Please note that this form is strictly for project inquiries only. To apply for a job,
-              please visit our{" "}
-              <Link
-                href="https://allcorrectgames.com/for-freelancers/"
-                target="_blank"
-                noopener="true">
-                <a>career page.</a>
-              </Link>
-            </p>
-            <button type="submit">Send the form –></button>
-          </ModalForm>
-        </animated.div>
-      </StyledModal>
+                <input type="file">Add file if needed</input>
+              </ErrorBoundary>
+              {checked && (
+                <input
+                  type="checkbox"
+                  name="checkbox"
+                  value="GDPR Agreement"
+                  checked
+                  onChange={() => setChecked(!checked)}
+                />
+              )}
+              <p>
+                Please note that this form is strictly for project inquiries only. To apply for a
+                job, please visit our{" "}
+                <Link
+                  href="https://allcorrectgames.com/for-freelancers/"
+                  target="_blank"
+                  noopener="true">
+                  <a>career page.</a>
+                </Link>
+              </p>
+              <button type="submit">Send the form –></button>
+            </form>
+          </ModalContent>
+        </ModalWrapper>
+      </animated.div>
     </Background>
   ) : null;
 
