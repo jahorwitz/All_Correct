@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import Link from "next/link";
 import { useSpring, animated } from "react-spring";
 import ReactDOM from "react-dom";
-import { Background, ModalWrapper, ModalContent } from "./Modal.styles";
+import { Background, ModalWrapper, Text, Title } from "./Modal.styles";
 import Confirm from "./Confirm";
 import ErrorBoundary from "../ErrorBoundary";
 
@@ -72,73 +72,68 @@ const Modal = ({ showModal, onClose, title }) => {
     }
   };
 
-  const modalContent = (
+  const modalContent = showModal && (
     <Background ref={modalRef} onClick={handleCloseClick}>
-      <animated.div style={animation}>
-        <ModalWrapper>
-          <ModalContent>
-            {title && <h1>{title}</h1>}
-            <form onSubmit={handleSubmit}>
-              <ErrorBoundary>
-                <input
-                  type="text"
-                  name="name"
-                  value={name}
-                  onChange={handleChange}
-                  placeholder="Name"
-                  minLength="2"
-                  maxLength="40"
-                  required
-                />
-
-                <input
-                  type="text"
-                  name="message"
-                  value={message}
-                  onChange={handleChange}
-                  placeholder="Project Description"
-                  minLength="2"
-                  maxLength="200"
-                  required
-                />
-
-                <input
-                  type="email"
-                  name="email"
-                  value={email}
-                  onChange={handleChange}
-                  placeholder="Email*"
-                  required
-                />
-
-                <input type="file">Add file if needed</input>
-
-                {checked && (
-                  <input
-                    type="checkbox"
-                    name="checkbox"
-                    value="GDPR Agreement"
-                    checked
-                    onChange={() => setChecked(!checked)}
-                  />
-                )}
-                <p>
-                  Please note that this form is strictly for project inquiries only. To apply for a
-                  job, please visit our{" "}
-                  <Link
-                    href="https://allcorrectgames.com/for-freelancers/"
-                    target="_blank"
-                    noopener="true">
-                    <a>career page.</a>
-                  </Link>
-                </p>
-                <button type="submit">Send the form –></button>
-              </ErrorBoundary>
-              {submitted && <Confirm onClose={onClose} title="Thank you!" />}
-            </form>
-          </ModalContent>
-        </ModalWrapper>
-      </animated.div>
+      {/* <animated.div style={animation}> */}
+      <ModalWrapper role="Form Inquiry" aria-labelledby="Form Inquiry">
+        <Title>{title}</Title>
+        <form onSubmit={handleSubmit}>
+          <ErrorBoundary>
+            <input
+              type="text"
+              name="name"
+              value={name}
+              onChange={handleChange}
+              placeholder="Name"
+              minLength="2"
+              maxLength="40"
+              required
+            />
+            <input
+              type="text"
+              name="message"
+              value={message}
+              onChange={handleChange}
+              placeholder="Project Description"
+              minLength="2"
+              maxLength="200"
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              value={email}
+              onChange={handleChange}
+              placeholder="Email*"
+              required
+            />
+            <input type="file" />
+            Add file if needed
+            {checked && (
+              <input
+                type="checkbox"
+                name="checkbox"
+                value="GDPR Agreement"
+                checked
+                onChange={() => setChecked(!checked)}
+              />
+            )}
+            <Text>
+              Please note that this form is strictly for project inquiries only. To apply for a job,
+              please visit our{" "}
+              <Link
+                href="https://allcorrectgames.com/for-freelancers/"
+                target="_blank"
+                noopener="true">
+                <a>career page.</a>
+              </Link>
+            </Text>
+            <button type="submit">Send the form –></button>
+          </ErrorBoundary>
+          {/* {submitted && <Confirm onClose={onClose} title="Thank you!" />} */}
+        </form>
+      </ModalWrapper>
+      {/* </animated.div> */}
     </Background>
   );
 
