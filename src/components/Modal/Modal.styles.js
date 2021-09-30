@@ -1,16 +1,16 @@
 import styled from "styled-components";
 
 export const Background = styled.div`
-  width: 404px;
-  height: auto;
+  width: 100vw;
+  height: 100vh;
   position: fixed;
   margin: auto;
-  bottom: 0;
-  right: 0;
 `;
 
 export const ModalWrapper = styled.div`
-  position: relative;
+  position: fixed;
+  bottom: 0;
+  right: 0;
   width: 404px;
   height: auto;
   background-color: ${({ theme }) => theme.colors.white};

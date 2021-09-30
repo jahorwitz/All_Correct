@@ -9,6 +9,15 @@ const Modal = ({ showModal, onClose }) => {
   const [submitted, setSubmitted] = useState(false);
   const [step, setStep] = useState(0);
 
+  // form fields
+  const [formFields, setFormFields] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const { name, email, message } = formFields;
+
   // modal related
   const [isBrowser, setIsBrowser] = useState(false);
 
@@ -16,7 +25,7 @@ const Modal = ({ showModal, onClose }) => {
     setIsBrowser(true);
   }, []);
 
-  const handleCloseClick = (e) => {
+  const handleOutsideClick = (e) => {
     if (modalRef.current === e.target) {
       onClose();
     }
@@ -35,15 +44,6 @@ const Modal = ({ showModal, onClose }) => {
     document.addEventListener("keydown", keyPress);
     return () => document.removeEventListener("keydown", keyPress);
   }, [keyPress]);
-
-  // form fields
-  const [formFields, setFormFields] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-
-  const { name, email, message } = formFields;
 
   const handleChange = (e) => {
     setFormFields({
@@ -65,14 +65,13 @@ const Modal = ({ showModal, onClose }) => {
   };
 
   const modalContent = showModal && (
-    <Background onClick={handleCloseClick} ref={modalRef}>
+    <Background onClick={handleOutsideClick} ref={modalRef}>
       <ModalWrapper role="Form Inquiry" aria-labelledby="Form Inquiry">
-        <form onSubmit={handleSubmit}>
+        <form>
           {step === 1 && submitted ? (
-            <Confirm onClose={handleCloseClick} />
+            <Confirm onClose={onClose} />
           ) : (
             <ModalInfo
-              onClose={handleCloseClick}
               handleChange={handleChange}
               handleSubmit={handleSubmit}
               formFields={formFields}

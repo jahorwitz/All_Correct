@@ -1,9 +1,9 @@
-import ErrorBoundary from "../ErrorBoundary";
-import Link from "next/link";
-import { Button, CheckboxWrapper, Info, Text, Title } from "./Modal.styles";
 import { useState } from "react";
+import Link from "next/link";
+import ErrorBoundary from "../ErrorBoundary";
+import { Button, CheckboxWrapper, Info, Text, Title } from "./Modal.styles";
 
-const ModalInfo = ({ handleSubmit, handleChange, formFields, submitted }) => {
+const ModalInfo = ({ handleSubmit, handleChange, formFields }) => {
   const [checked, setChecked] = useState(false);
 
   return (
