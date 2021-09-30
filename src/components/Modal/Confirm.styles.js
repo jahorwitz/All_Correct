@@ -3,8 +3,9 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: column;
+  height: 861px;
 `;
 
 export const Text = styled.p`
@@ -17,6 +18,7 @@ export const Text = styled.p`
   color: ${(props) => props.theme.fonts.dark};
   text-align: left;
   padding: 40px 40px 60px;
+  margin: 0;
 `;
 
 export const Button = styled.button`
@@ -26,12 +28,13 @@ export const Button = styled.button`
   font-size: 32px;
   line-height: 39px;
   letter-spacing: -0.02em;
-  margin-left: 40px;
-  margin-bottom: 40px;
   color: #4a8eff;
   background-color: ${(props) => props.theme.colors.white};
   outline: none;
   border: none;
+  text-align: left;
+  padding: 40px 40px 60px;
+  margin: 0;
 
   &:hover {
     cursor: pointer;
