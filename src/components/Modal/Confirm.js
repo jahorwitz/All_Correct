@@ -1,13 +1,14 @@
 import { Text, Container } from "./Confirm.styles";
+import { Button } from "./Modal.styles";
 
-const Confirm = ({ onClose, title }) => {
+const Confirm = ({ onClose }) => {
   return (
     <Container>
-      <Text>{title}</Text>
+      <Text>Thank you!</Text>
       <Text>Your request has been sent to our manager and we will reach back to you soon.</Text>
-      <Text onClick={onClose} color="blue">
+      <Button onClick={onClose} color="blue">
         Ok, got it!
-      </Text>
+      </Button>
     </Container>
   );
 };
