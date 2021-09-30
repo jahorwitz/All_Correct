@@ -49,7 +49,7 @@ const ModalInfo = ({ handleSubmit, handleChange, formFields }) => {
             value="GDPR Agreement"
             onChange={() => setChecked(!checked)}
           />
-          {checked ? <Text>GDPR Agreement</Text> : <Text>GDPR Agreement</Text>}
+          <Text>GDPR Agreement</Text>
         </CheckboxWrapper>
         <Info>
           Please note that this form is strictly for project inquiries only. To apply for a job,
