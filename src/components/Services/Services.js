@@ -1,21 +1,21 @@
 import { Container, Title } from "./Services.styles";
 
-import Collapsible from "../Collapsible/Collapsible.js";
+import Collapsibles from "../Collapsible/Collapsible.js";
 import CollapsibleItem from "../CollapsibleItem/CollapsibleItem.js";
 
 function Services() {
   const fakedata = [
-    { title: "Lean game localization" },
-    { title: "Lcoalization and functional game testing" },
+    { title: "Learn game localization" },
+    { title: "Localization and functional game testing" },
     { title: "Voiceovers" },
-    { title: "Gameart" },
+    { title: "Game art" },
   ];
 
   return (
     <Container>
       <Title>Our Services</Title>
 
-      <Collapsible>
+      <Collapsibles>
         {fakedata.map((item, i) => (
           <CollapsibleItem title={item.title} key={i}>
             <p>
@@ -29,7 +29,7 @@ function Services() {
             </p>
           </CollapsibleItem>
         ))}
-      </Collapsible>
+      </Collapsibles>
     </Container>
   );
 }

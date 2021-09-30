@@ -4,13 +4,7 @@ export const Container = styled.li`
   width: 100%;
   display: flex;
   flex-direction: column;
-
   border-bottom: 1px solid ${(props) => props.theme.colors.white};
-  padding-top: 70px;
-
-  &:first-child {
-    padding-top: 0;
-  }
 `;
 
 export const HeaderContainer = styled.div`
@@ -28,6 +22,7 @@ export const Title = styled.h2`
 `;
 
 export const DropdownButton = styled.button`
+  all: unset;
   color: ${(props) => props.theme.colors.blue};
   border: none;
   background: none;
@@ -36,6 +31,7 @@ export const DropdownButton = styled.button`
   line-height: 30px;
 
   transform: ${({ isOpen }) => (isOpen ? "rotate(90deg)" : "none")};
+  transition: all 0.3s;
 
   &:hover {
     cursor: pointer;
@@ -44,6 +40,10 @@ export const DropdownButton = styled.button`
 
 export const Content = styled.div`
   visibility: ${({ isOpen }) => (isOpen ? "visible" : "hidden")};
+  opacity: ${({ isOpen }) => (isOpen ? 1 : 0)};
   height: ${({ isOpen }) => (isOpen ? "100%" : "0")};
   padding: ${({ isOpen }) => (isOpen ? "30px 0 60px" : "0")};
+  transition: all 0.1s ease-out, padding-top 0.2s ease-out, padding-bottom 0.1s ease-out, height 0s;
+  line-height: 19px;
+  font-size: 16px;
 `;

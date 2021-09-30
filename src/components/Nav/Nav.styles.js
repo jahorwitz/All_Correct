@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.nav`
   position: relative;
   height: 166px;
   padding: ${(props) => (props.inherit ? "" : props.theme.padding.lg)};
