@@ -14,7 +14,7 @@ const Form = ({ inherit }) => {
         <Text color="blue">Get in touch</Text>
         <Text>to start your project &#10230;</Text>
       </Wrapper>
-      {showModal && <Modal onClose={closeModal} showModal={showModal} />}
+      <Modal onClose={closeModal} showModal={showModal} />
     </Container>
   );
 };
