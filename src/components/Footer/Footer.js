@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import facebookLogo from "../../../public/images/logos/facebook.svg";
@@ -13,11 +14,14 @@ import {
   Wrapper,
 } from "./Footer.styles";
 import Nav from "../Nav/Nav.js";
+import GetInTouchModalContext from "../../context/GetInTouchModalContext";
 
-const Footer = ({ showModal, closeModal, openModal }) => {
+const Footer = () => {
+  const { showModal, openModal, closeModal } = useContext(GetInTouchModalContext);
+
   return (
     <FooterWrapper>
-      <Nav inherit={true} openModal={openModal} closeModal={closeModal} showModal={showModal} />
+      <Nav inherit={true} showModal={showModal} openModal={openModal} closeModal={closeModal} />
       <Wrapper>
         <Wrapper className="grid">
           <AddressWrapper>

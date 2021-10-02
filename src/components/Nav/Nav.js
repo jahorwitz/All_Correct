@@ -1,7 +1,11 @@
+import { useContext } from "react";
 import GetInTouchModal from "../GetInTouchModal/GetInTouchModal";
 import { Container, Logo, Menu, Text } from "./Nav.styles";
+import GetInTouchModalContext from "../../context/GetInTouchModalContext";
 
-function Nav({ lang, inherit, openModal, closeModal, showModal }) {
+function Nav({ lang, inherit }) {
+  const { showModal, openModal, closeModal } = useContext(GetInTouchModalContext);
+
   return (
     <Container inherit={inherit}>
       <Logo>

@@ -1,8 +1,11 @@
-import { useCallback, useState } from "react";
+import { useContext } from "react";
+import GetInTouchModalContext from "../../context/GetInTouchModalContext";
 import GetInTouchModal from "../GetInTouchModal/GetInTouchModal";
 import { Text, Container, Wrapper } from "./GetInTouchForm.styles";
 
-const GetInTouchForm = ({ inherit, openModal, closeModal, showModal }) => {
+const GetInTouchForm = ({ inherit }) => {
+  const { showModal, openModal, closeModal } = useContext(GetInTouchModalContext);
+
   return (
     <Container inherit={inherit}>
       <Wrapper onClick={openModal}>
