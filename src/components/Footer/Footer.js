@@ -14,10 +14,10 @@ import {
 } from "./Footer.styles";
 import Nav from "../Nav/Nav.js";
 
-const Footer = () => {
+const Footer = ({ showModal, closeModal, openModal }) => {
   return (
     <FooterWrapper>
-      <Nav inherit={true} />
+      <Nav inherit={true} openModal={openModal} closeModal={closeModal} showModal={showModal} />
       <Wrapper>
         <Wrapper className="grid">
           <AddressWrapper>

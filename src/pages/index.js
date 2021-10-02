@@ -19,7 +19,7 @@ export default function Home() {
       <Active />
       <Reviews />
       <GetInTouchForm openModal={openModal} closeModal={closeModal} showModal={showModal} />
-      <Footer />
+      <Footer openModal={openModal} closeModal={closeModal} showModal={showModal} />
     </>
   );
 }
