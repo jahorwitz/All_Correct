@@ -1,13 +1,8 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import GetInTouchModal from "../GetInTouchModal/GetInTouchModal";
 import { Text, Container, Wrapper } from "./GetInTouchForm.styles";
 
-const GetInTouchForm = ({ inherit }) => {
-  const [showModal, setShowModal] = useState(false);
-
-  const openModal = useCallback(() => setShowModal(true), []);
-  const closeModal = useCallback(() => setShowModal(false), []);
-
+const GetInTouchForm = ({ inherit, openModal, closeModal, showModal }) => {
   return (
     <Container inherit={inherit}>
       <Wrapper onClick={openModal}>
