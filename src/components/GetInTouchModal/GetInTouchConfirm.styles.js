@@ -2,10 +2,17 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: flex-start;
+  justify-content: space-between;
   flex-direction: column;
   height: 861px;
+`;
+
+export const TextWrapper = styled.div`
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 80px;
 `;
 
 export const Text = styled.p`
@@ -17,7 +24,7 @@ export const Text = styled.p`
   letter-spacing: -0.02em;
   color: ${(props) => props.theme.fonts.dark};
   text-align: left;
-  padding: 40px 40px 60px;
+  padding: 40px 40px 0;
   margin: 0;
 `;
 
@@ -33,8 +40,9 @@ export const Button = styled.button`
   outline: none;
   border: none;
   text-align: left;
-  padding: 40px 40px 60px;
-  margin: 0;
+  display: block;
+  padding-left: 40px;
+  padding-bottom: 40px;
 
   &:hover {
     cursor: pointer;

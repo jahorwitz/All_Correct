@@ -2,9 +2,13 @@ import styled from "styled-components";
 
 export const Background = styled.div`
   width: 100vw;
-  height: 100vh;
+  height: auto;
   position: fixed;
   margin: auto;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
 `;
 
 export const ModalWrapper = styled.div`
@@ -12,7 +16,8 @@ export const ModalWrapper = styled.div`
   bottom: 0;
   right: 0;
   width: 404px;
-  height: auto;
+  height: 100vh;
+  overflow-y: auto;
   background-color: ${({ theme }) => theme.colors.white};
   color: #000;
   display: flex;

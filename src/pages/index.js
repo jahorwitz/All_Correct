@@ -3,7 +3,7 @@ import Services from "../components/Services/Services.js";
 import Active from "../components/Active/Active.js";
 import Reviews from "../components/Reviews/Reviews.js";
 import Footer from "../components/Footer/Footer.js";
-import Form from "../components/Form/Form.js";
+import GetInTouchForm from "../components/GetInTouchForm/GetInTouchForm.js";
 
 export default function Home() {
   return (
@@ -12,7 +12,7 @@ export default function Home() {
       <Services />
       <Active />
       <Reviews />
-      <Form />
+      <GetInTouchForm />
       <Footer />
     </>
   );

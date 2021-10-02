@@ -1,9 +1,9 @@
 import { useState } from "react";
 import Link from "next/link";
-import ErrorBoundary from "../ErrorBoundary";
-import { Button, CheckboxWrapper, Info, Text, Title } from "./Modal.styles";
+import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
+import { Button, CheckboxWrapper, Info, Text, Title } from "./GetInTouchModal.styles";
 
-const ModalInfo = ({ handleSubmit, handleChange, formFields }) => {
+const GetInTouchModalInfo = ({ handleSubmit, handleChange, formFields }) => {
   const [checked, setChecked] = useState(false);
 
   return (
@@ -64,4 +64,4 @@ const ModalInfo = ({ handleSubmit, handleChange, formFields }) => {
   );
 };
 
-export default ModalInfo;
+export default GetInTouchModalInfo;
