@@ -1,6 +1,6 @@
 import { Text, Container, TextWrapper, Button } from "./GetInTouchConfirm.styles";
 
-const GetInTouchConfirm = ({ onClose }) => {
+const GetInTouchConfirm = ({ closeModal }) => {
   return (
     <Container>
       <TextWrapper>
@@ -8,7 +8,7 @@ const GetInTouchConfirm = ({ onClose }) => {
         <Text>Your request has been sent to our manager and we will reach back to you soon.</Text>
       </TextWrapper>
 
-      <Button onClick={onClose} color="blue" type="button">
+      <Button onClick={closeModal} color="blue" type="button">
         Ok, got it!
       </Button>
     </Container>

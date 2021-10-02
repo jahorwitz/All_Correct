@@ -1,10 +1,13 @@
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useState, useCallback, useContext } from "react";
 import ReactDOM from "react-dom";
 import GetInTouchConfirm from "./GetInTouchConfirm";
 import GetInTouchModalInfo from "./GetInTouchModalInfo";
 import { Background, ModalWrapper } from "./GetInTouchModal.styles";
+import GetInTouchModalContext from "../../context/GetInTouchModalContext";
 
-const GetInTouchModal = ({ showModal, onClose }) => {
+const GetInTouchModal = () => {
+  const { showModal, closeModal } = useContext(GetInTouchModalContext);
+
   const modalRef = useRef();
   const [submitted, setSubmitted] = useState(false);
   const [step, setStep] = useState(0);
@@ -27,7 +30,7 @@ const GetInTouchModal = ({ showModal, onClose }) => {
 
   const handleOutsideClick = (e) => {
     if (modalRef.current === e.target) {
-      onClose();
+      closeModal();
       setFormFields({
         name: "",
         email: "",
@@ -39,7 +42,7 @@ const GetInTouchModal = ({ showModal, onClose }) => {
   const keyPress = useCallback(
     (e) => {
       if (e.key === "Escape" && showModal) {
-        onClose();
+        closeModal();
         setFormFields({
           name: "",
           email: "",
@@ -79,14 +82,14 @@ const GetInTouchModal = ({ showModal, onClose }) => {
       <ModalWrapper role="Form Inquiry" aria-labelledby="Form Inquiry">
         <form>
           {step === 1 && submitted ? (
-            <GetInTouchConfirm onClose={onClose} />
+            <GetInTouchConfirm closeModal={closeModal} />
           ) : (
             <GetInTouchModalInfo
               handleChange={handleChange}
               handleSubmit={handleSubmit}
               formFields={formFields}
               submitted={submitted}
-              onClose={onClose}
+              closeModal={closeModal}
             />
           )}
         </form>

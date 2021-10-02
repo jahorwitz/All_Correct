@@ -12,7 +12,7 @@ const GetInTouchForm = ({ inherit }) => {
         <Text color="blue">Get in touch</Text>
         <Text>to start your project &#10230;</Text>
       </Wrapper>
-      <GetInTouchModal onClose={closeModal} showModal={showModal} />
+      <GetInTouchModal closeModal={closeModal} showModal={showModal} />
     </Container>
   );
 };
