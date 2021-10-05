@@ -58,7 +58,7 @@ const GetInTouchModalInfo = ({ handleSubmit, handleChange, formFields }) => {
             <a>career page.</a>
           </Link>
         </Info>
-        <Button onClick={handleSubmit}>Send the form –></Button>
+        <Button onClick={handleSubmit}>Send the form &#10230;</Button>
       </ErrorBoundary>
     </>
   );

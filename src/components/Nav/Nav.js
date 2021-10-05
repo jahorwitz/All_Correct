@@ -4,7 +4,8 @@ import { Container, Logo, Menu, Text } from "./Nav.styles";
 import GetInTouchModalContext from "../../context/GetInTouchModalContext";
 
 function Nav({ lang, inherit }) {
-  const { showModal, openModal, closeModal } = useContext(GetInTouchModalContext);
+  const { showModal, toggleModal } = useContext(GetInTouchModalContext);
+  console.log(useContext(GetInTouchModalContext))
 
   return (
     <Container inherit={inherit}>
@@ -31,10 +32,10 @@ function Nav({ lang, inherit }) {
         <Text as="a" href="#" rel="noreferrer noopener" className="normal">
           Join us
         </Text>
-        <Text className="normal" color="blue" onClick={openModal}>
+        <Text className="normal" color="blue" onClick={toggleModal}>
           Get in touch
         </Text>
-        <GetInTouchModal onClose={closeModal} showModal={showModal} />
+        <GetInTouchModal onClose={toggleModal} showModal={showModal} />
         {lang && <Text className="normal block">Ru</Text>}
       </Menu>
     </Container>

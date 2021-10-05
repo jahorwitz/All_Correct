@@ -6,7 +6,8 @@ import { Background, ModalWrapper } from "./GetInTouchModal.styles";
 import GetInTouchModalContext from "../../context/GetInTouchModalContext";
 
 const GetInTouchModal = () => {
-  const { showModal, closeModal } = useContext(GetInTouchModalContext);
+  // const { showModal, closeModal } = useContext(GetInTouchModalContext);
+  const { showModal, toggleModal } = useContext(GetInTouchModalContext);
 
   const modalRef = useRef();
   const [submitted, setSubmitted] = useState(false);
@@ -30,7 +31,7 @@ const GetInTouchModal = () => {
 
   const handleOutsideClick = (e) => {
     if (modalRef.current === e.target) {
-      closeModal();
+      toggleModal();
       setFormFields({
         name: "",
         email: "",
@@ -42,7 +43,7 @@ const GetInTouchModal = () => {
   const keyPress = useCallback(
     (e) => {
       if (e.key === "Escape" && showModal) {
-        closeModal();
+        toggleModal();
         setFormFields({
           name: "",
           email: "",
@@ -82,14 +83,14 @@ const GetInTouchModal = () => {
       <ModalWrapper role="Form Inquiry" aria-labelledby="Form Inquiry">
         <form>
           {step === 1 && submitted ? (
-            <GetInTouchConfirm closeModal={closeModal} />
+            <GetInTouchConfirm closeModal={toggleModal} />
           ) : (
             <GetInTouchModalInfo
               handleChange={handleChange}
               handleSubmit={handleSubmit}
               formFields={formFields}
               submitted={submitted}
-              closeModal={closeModal}
+              closeModal={toggleModal}
             />
           )}
         </form>
