@@ -5,6 +5,7 @@ export const OfficesWrapper = styled.section`
   letter-spacing: -0.01;
   color: ${({ theme }) => theme.colors.white};
   margin-left: 40px;
+  padding: ${(props) => props.theme.padding.lg};
   padding-top: 310px;
 
   img {
